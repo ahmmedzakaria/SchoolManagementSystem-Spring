@@ -12,9 +12,12 @@ import java.util.List;
  * @author User
  */
 public interface ISupport<T> {
-    boolean add(T t);
+    
     boolean delete(int id);
     boolean update(T t);
     List<T> getAll();
     T getById(int id);
+    default int addAll(List<T> list){
+        return 0;
+    }
 }

@@ -134,3 +134,17 @@
   
 }
 #btn_navigate{z-index: 100;}
+
+.left_sidebar .fa{
+  margin-left:20px;
+}
+
+.menu-closed-add,
+.menu-closed-remove{
+  transition:all 0.5s;
+}
+
+.menu-closed-active,
+.menu-closed{
+  left:-110px
+}

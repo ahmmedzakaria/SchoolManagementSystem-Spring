@@ -5,11 +5,15 @@
  */
 package com.school.support;
 
+import com.school.domain.support.CommonSupport;
+import com.school.service.CommonSuppotService;
+
 
 /**
  *
  * @author User
  */
 public interface ISupportService<T> extends ISupport<T>{
-   
+    boolean add(T t);
+   CommonSupport getCommonSupportService();
 }

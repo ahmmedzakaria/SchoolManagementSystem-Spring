@@ -22,4 +22,42 @@ public class IndexController {
         //        return "Welcome to RestTemplate Example.";
         return "home/index";
     }
+//    Admin
+    
+    @RequestMapping("/admin/home")
+    public String admin() {//Welcome page, non-rest
+        //        return "Welcome to RestTemplate Example.";
+        return "admin/admin";
+    }
+    
+    @RequestMapping("/admin/adduser")
+    public String addUser() {
+        return "admin/adduser";
+    }
+    
+    @RequestMapping("/admin/viewusers")
+    public String viewUser() {
+        return "admin/viewusers";
+    }
+    
+    @RequestMapping("/admin/access")
+    public String userAccessControl() {
+        return "admin/access";
+    }
+    
+    //Office
+       @RequestMapping("/office/home")
+    public String officeHome() {
+        return "office/office";
+    }
+    
+    @RequestMapping("/office/addstudent")
+    public String addStudent() {
+        return "office/addstudent";
+    }
+    
+    @RequestMapping("/office/viewstudents")
+    public String viewStudent() {
+        return "office/viewstudents";
+    }
 }

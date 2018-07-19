@@ -1,48 +1,47 @@
 <%-- 
     Document   : index
-    Created on : Jan 23, 2018, 2:37:11 AM
-    Author     : Faculty
+    Created on : Jul 9, 2018, 4:23:44 PM
+    Author     : Zakaria
 --%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-    <script src="<c:url value='/static/js/app.js' />"></script>
-    <!--<script src="<c:url value='/static/js/service/user_service.js' />"></script>-->
-    <script src="<c:url value='/static/js/controller/user_controller.js' />"></script>
     <head>
-        <title>Home</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>My School</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link href="<c:url value='/static/css/style.css' />" rel="stylesheet"></link>
-        <!--<link href="<c:url value='/static/css/layout.css' />" rel="stylesheet"></link>-->
+        <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">-->
+        <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.0.0/ui-bootstrap-tpls.js"></script>-->
         <link href='https://fonts.googleapis.com/css?family=Roboto:500,900,100,300,700,400' rel='stylesheet' type='text/css'>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
-        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
-    </head>
-    <body>
-        <div class="container-fluid">
-            <div class="row main_container">
-                <div class="col-md-12">
-                    <div class="d-flex flex-column mb-3">
-                        <div class="header">
-                            <section style="background: #34495e; color: rgba(255, 255, 255, 0.5);">
-                                <nav class="circle">
-                                    <ul>
-                                        <li><a href="#">Home</a></li>
-                                        <li><a href="#">Result</a></li>
-                                        <li><a href="#">Contact Us</a></li>
-                                        <li><a href="#">About</a></li>
-                                        <li><a href="#">Notice</a></li>
-                                    </ul>
-                                </nav>
-                            </section>
-                        </div>
+        <link href="<c:url value='/static/css/style.css' />" rel="stylesheet"></link>
 
+<!--        <script src="https://code.angularjs.org/1.5.5/angular.js"></script> 
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.js"></script>
+        Load angular bootstrap         
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.0.0/ui-bootstrap.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.0.0/ui-bootstrap-tpls.js"></script>
+         CSS ===================== 
+        load font awesome
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+         load bootstrap 
+        <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"/> -->
+
+    </head>
+    <body ng-app="myApp">
+
+        <div class="d-flex flex-column">
+            <div class="header">
+                <section style="background: #34495e; color: rgba(255, 255, 255, 0.5);">
+                    <nav class="circle">
+                        <ul>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">Result</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Notice</a></li>
+                        </ul>
+                    </nav>
+                </section>
+            </div>
+        </div>

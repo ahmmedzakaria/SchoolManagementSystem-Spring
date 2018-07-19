@@ -4,6 +4,8 @@
 @import url("side_bar_menu.css");
 @import url("animate.css");
 @import url("bird-alert-bulma.css");
+@import url("form.css");
+@import url("model.css");
 
 :root {
     /* Font */

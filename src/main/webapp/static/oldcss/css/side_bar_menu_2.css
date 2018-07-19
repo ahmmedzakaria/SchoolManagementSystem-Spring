@@ -1,0 +1,127 @@
+body{
+  margin:0;
+  font-family:sans-serif;
+}
+
+.sidebar-menu a, .sidebar-menu a:hover{
+  color:white;
+}
+.sidebar-menu{
+  background-color:#777;
+  color:white;
+  position:absolute;
+  left:0;
+  height:80vh;
+}
+
+.sidebar-menu .menu-header{
+  background-color:#444;
+  padding:10px 30px;
+}
+
+.sidebar-menu .fa{
+  margin-left:100px;
+}
+ul{
+  list-style:none;
+}
+li{
+  padding:10px;
+}
+
+
+
+.main-content{
+  padding:10px 20px;
+  margin-left:55px;
+  
+}
+.main-content.has-sidebar{
+  margin-left:245px;
+}
+/*Angular JS Animation examples by coding-dude.com*/
+.menu-closed-add,
+.menu-closed-remove{
+  transition:all 0.5s;
+}
+
+.menu-closed-active,
+.menu-closed{
+  left:-200px
+}
+
+/*Angular JS Animation examples by coding-dude.com Part 2*/
+
+.message.ng-hide-animate
+{
+  transition:all 5s;
+}
+
+.message.ng-hide-remove{
+  opacity:0;
+}
+
+.message.ng-hide-remove-active{
+  opacity:1;
+}
+
+.message.ng-hide-add-active{
+  opacity:0;
+}
+
+.things .ng-enter,
+.things .ng-leave{
+  transition:all ease-in 0.5s;
+}
+
+.things .ng-enter,
+.things .ng-leave-active{
+  opacity:0;
+  margin-top:-5px;
+  margin-left:-10px;
+}
+
+
+.things .ng-enter-active{
+  opacity:1;
+  margin-top:0px;
+  margin-left:0px;
+}
+
+.ng-enter-stagger{
+  transition-delay:0.3s;
+}
+
+.ng-leave-stagger{
+  transition-delay:0.2s;
+}
+
+/*Angular JS animate your forms*/
+form.login{
+  padding:0 10px;  
+  color:#444;
+}
+form.login input{
+  margin:10px 0px;
+  padding:5px;
+}
+form.login button{
+  padding:5px;
+}
+form.login input.ng-invalid-add{
+  transition:all 0.5s;
+}
+
+form.login.ng-invalid input.ng-invalid{
+  animation:shake 0.5s forwards;
+  box-shadow:0 0 10px red;
+}
+
+@keyframes shake{
+  0%{ margin-left:0;}
+  15%{ margin-left:10px;}
+  30%{ margin-left:-10px;}
+  60%{ margin-left:10px;}
+  85%{ margin-left:-10px;}
+  100%{ margin-left:0;}
+}

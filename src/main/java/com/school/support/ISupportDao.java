@@ -5,11 +5,15 @@
  */
 package com.school.support;
 
+import java.util.List;
+
 
 /**
  *
  * @author User
  */
 public interface ISupportDao<T> extends ISupport<T>{
+   T add(T t);
+   default List<T> getAllByRole(int id){return null;};
    
 }

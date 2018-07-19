@@ -6,12 +6,13 @@
 package com.school.service;
 
 
-import com.school.dao.support.CommonSuppportDao;
-import com.school.domain.Role;
-import com.school.domain.Users;
+import com.school.dao.support.IUserDao;
+import com.school.domain.entity.Role;
+import com.school.domain.entity.Users;
+import com.school.domain.support.CommonSupport;
+import com.school.service.support.IUserService;
 import com.school.support.IGetAll;
-import com.school.support.ISupportDao;
-import com.school.support.ISupportService;
+import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,30 +22,34 @@ import org.springframework.stereotype.Service;
  * @author Faculty
  */
 @Service
-public class UserService implements ISupportService<Users>{
+public class UserService implements IUserService<Users>{
     
     @Autowired
-    private ISupportDao<Users> iSupportDao;
+    private IUserDao<Users> iUserDao;
     
-
+    @Autowired
+    private CommonSuppotService commonSuppotService;
+    
     @Autowired
     private IGetAll iGetAll;
 
     @Override
-    public boolean add(Users user) {
-        iSupportDao.add(user);
+    public boolean add(Users obj) {
+        obj.setRegisterDate(new Date());
+        iUserDao.add(obj);
         return true;
     }
 
     @Override
     public boolean delete(int id) {
-        iSupportDao.delete(id);
+        iUserDao.delete(id);
         return true;
     }
 
     @Override
-    public boolean update(Users user) {
-        iSupportDao.update(user);
+    public boolean update(Users obj) {
+        System.out.println("User: \n"+obj.toString());;
+        iUserDao.update(obj);
         return true;
     }
 
@@ -52,14 +57,18 @@ public class UserService implements ISupportService<Users>{
     public List<Users> getAll() {
         System.out.println("GetAll Users............");
         List<Role> allClasses = iGetAll.get("Role");
-        allClasses.forEach(System.out::println);
-        
-        return iSupportDao.getAll();
+        allClasses.forEach(System.out::println);    
+        return iUserDao.getAll();
     }
 
     @Override
     public Users getById(int id) {   
-        return iSupportDao.getById(id);
+        return iUserDao.getById(id);
+    }
+
+    @Override
+    public CommonSupport getCommonSupportService() {
+        return commonSuppotService.getCommonSupportServiceUser();
     }
     
 }
