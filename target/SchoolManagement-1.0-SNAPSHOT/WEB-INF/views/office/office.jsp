@@ -23,19 +23,5 @@
     </div>
 
 </div>
-<script>
-    function showAlert(massage){
-    console.log(massage);
-    if (massage == 'created'){
-    birdAlert.notify({
-    msg: 'Facilisis pellentesque dictumst dignissim, mauris et tincidunt tincidunt',
-            title: 'Success',
-            className: 'success'
-    });
-    }
-    }
 
-
-
-</script>
 <%@include file="../home/footer.jsp" %>

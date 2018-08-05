@@ -6,13 +6,15 @@
 package com.school.service;
 
 
-import com.school.dao.support.IPaymentDao;
 import com.school.domain.entity.Payment;
 import com.school.domain.support.CommonSupport;
-import com.school.service.support.IPaymentService;
+
 import com.school.support.IGetAll;
+import com.school.support.ISupportDao;
+import com.school.support.ISupportService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 /**
@@ -20,10 +22,11 @@ import org.springframework.stereotype.Service;
  * @author Faculty
  */
 @Service
-public class PaymentService implements IPaymentService<Payment>{
+public class PaymentService implements ISupportService<Payment>{
     
+    @Qualifier(value = "paymentDao")
     @Autowired
-    private IPaymentDao<Payment> iPaymentDao;
+    private ISupportDao<Payment> iPaymentDao;
     
     @Autowired
     private CommonSuppotService commonSuppotService;

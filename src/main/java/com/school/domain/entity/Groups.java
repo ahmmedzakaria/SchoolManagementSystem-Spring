@@ -1,5 +1,5 @@
 package com.school.domain.entity;
-// Generated Jul 9, 2018 4:05:01 PM by Hibernate Tools 4.3.1
+// Generated Jul 12, 2018 5:22:44 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -26,7 +26,6 @@ public class Groups  implements java.io.Serializable {
      private Integer groupId;
      private String groupName;
      private Set<TeacherClasses> teacherClasseses = new HashSet<TeacherClasses>(0);
-     private Set<Attendance> attendances = new HashSet<Attendance>(0);
      private Set<StudentRecordBs> studentRecordBses = new HashSet<StudentRecordBs>(0);
      private Set<Subjects> subjectses = new HashSet<Subjects>(0);
 
@@ -37,10 +36,9 @@ public class Groups  implements java.io.Serializable {
     public Groups(String groupName) {
         this.groupName = groupName;
     }
-    public Groups(String groupName, Set<TeacherClasses> teacherClasseses, Set<Attendance> attendances, Set<StudentRecordBs> studentRecordBses, Set<Subjects> subjectses) {
+    public Groups(String groupName, Set<TeacherClasses> teacherClasseses, Set<StudentRecordBs> studentRecordBses, Set<Subjects> subjectses) {
        this.groupName = groupName;
        this.teacherClasseses = teacherClasseses;
-       this.attendances = attendances;
        this.studentRecordBses = studentRecordBses;
        this.subjectses = subjectses;
     }
@@ -74,15 +72,6 @@ public class Groups  implements java.io.Serializable {
     
     public void setTeacherClasseses(Set<TeacherClasses> teacherClasseses) {
         this.teacherClasseses = teacherClasseses;
-    }
-
-@OneToMany(fetch=FetchType.LAZY, mappedBy="groups")
-    public Set<Attendance> getAttendances() {
-        return this.attendances;
-    }
-    
-    public void setAttendances(Set<Attendance> attendances) {
-        this.attendances = attendances;
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="groups")

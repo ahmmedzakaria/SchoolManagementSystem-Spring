@@ -1,5 +1,5 @@
 package com.school.domain.entity;
-// Generated Jul 9, 2018 4:05:01 PM by Hibernate Tools 4.3.1
+// Generated Jul 12, 2018 5:22:44 PM by Hibernate Tools 4.3.1
 
 
 import javax.persistence.Column;
@@ -23,19 +23,19 @@ public class AttendanceReport  implements java.io.Serializable {
 
 
      private Integer attendanceReportId;
+     private Months months;
      private StudentRecordBs studentRecordBs;
      private int totalPresents;
      private int totalAbsents;
-     private int monthId;
 
     public AttendanceReport() {
     }
 
-    public AttendanceReport(StudentRecordBs studentRecordBs, int totalPresents, int totalAbsents, int monthId) {
+    public AttendanceReport(Months months, StudentRecordBs studentRecordBs, int totalPresents, int totalAbsents) {
+       this.months = months;
        this.studentRecordBs = studentRecordBs;
        this.totalPresents = totalPresents;
        this.totalAbsents = totalAbsents;
-       this.monthId = monthId;
     }
    
      @Id @GeneratedValue(strategy=IDENTITY)
@@ -48,6 +48,16 @@ public class AttendanceReport  implements java.io.Serializable {
     
     public void setAttendanceReportId(Integer attendanceReportId) {
         this.attendanceReportId = attendanceReportId;
+    }
+
+@ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="month_id", nullable=false)
+    public Months getMonths() {
+        return this.months;
+    }
+    
+    public void setMonths(Months months) {
+        this.months = months;
     }
 
 @ManyToOne(fetch=FetchType.LAZY)
@@ -78,16 +88,6 @@ public class AttendanceReport  implements java.io.Serializable {
     
     public void setTotalAbsents(int totalAbsents) {
         this.totalAbsents = totalAbsents;
-    }
-
-    
-    @Column(name="month_id", nullable=false)
-    public int getMonthId() {
-        return this.monthId;
-    }
-    
-    public void setMonthId(int monthId) {
-        this.monthId = monthId;
     }
 
 

@@ -5,8 +5,10 @@
  */
 package com.school.dao;
 
-import com.school.dao.support.IMarksDao;
+import com.school.domain.entity.Grade;
 import com.school.domain.entity.Marks;
+import com.school.support.ISupportDao;
+import com.school.support.MarksManager;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate4.HibernateTemplate;
@@ -19,14 +21,17 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Transactional
 @Repository
-public class MarksDao implements IMarksDao<Marks>{
+public class MarksDao implements ISupportDao<Marks>{
     
     @Autowired
     private HibernateTemplate hibernateTemplate;
 
     @Override
     public Marks add(Marks obj) {
-         hibernateTemplate.save(obj);
+        Grade grade=new Grade();
+        grade.setGradeId(MarksManager.getGradeid(obj));
+        obj.setGrade(grade);
+         hibernateTemplate.saveOrUpdate(obj);
          return obj;
     }
 

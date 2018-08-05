@@ -8,9 +8,10 @@ package com.school.controller;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.school.domain.entity.RoutineMaintainer;
 import com.school.domain.support.CommonSupport;
-import com.school.service.support.IRoutineMaintainerService;
+import com.school.support.ISupportService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,8 +30,9 @@ import org.springframework.web.util.UriComponentsBuilder;
 @RequestMapping("/routineinfo")
 public class RoutineMaintainController {
 
+    @Qualifier(value = "routineMaintainerService")
     @Autowired
-    private IRoutineMaintainerService<RoutineMaintainer> iRoutineMaintainerService;
+    private ISupportService<RoutineMaintainer> iRoutineMaintainerService;
    
 
     @RequestMapping("/home")

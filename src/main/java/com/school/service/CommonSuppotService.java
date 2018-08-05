@@ -58,14 +58,6 @@ public final class CommonSuppotService {
     public static final String STUDENT_SESSION="StudentSession";
 
 
-
-    
-//    public CommonSuppotService(List<Gender> genderList, List<Religion> religionList, List<Role> roleList) {
-//        this.genderList = getGenderList();
-//        this.religionList = getReligionList();
-//        this.roleList = getRoleList();
-//    }
-    
  
     public CommonSupport getCommonSupportServiceUser(){
         roleList=(List<Role>) iGetAll.get(CommonSuppotService.ROLE);
@@ -87,7 +79,7 @@ public final class CommonSuppotService {
         studentSessionsList=(List<StudentSession>) iGetAll.get(CommonSuppotService.STUDENT_SESSION);
 
         CommonSupport c=new CommonSupport(classList,examList,gradeList,groupsList,marksPatternsList,sectionList,subjectList,studentSessionsList);
-           MyUtil.print("SubjectsListSize", ""+subjectList.size());
+//           MyUtil.print("SubjectsListSize", ""+subjectList.size());
         return c;
     }
     

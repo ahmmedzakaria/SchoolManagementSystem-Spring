@@ -5,8 +5,8 @@
  */
 package com.school.dao;
 
-import com.school.dao.support.IRoutineMaintainerDao;
 import com.school.domain.entity.RoutineMaintainer;
+import com.school.support.ISupportDao;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Transactional
 @Repository
-public class RoutineMaintainerDao implements IRoutineMaintainerDao<RoutineMaintainer>{
+public class RoutineMaintainerDao implements ISupportDao<RoutineMaintainer>{
     
     @Autowired
     private HibernateTemplate hibernateTemplate;

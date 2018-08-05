@@ -1,5 +1,5 @@
 package com.school.domain.entity;
-// Generated Jul 9, 2018 4:05:01 PM by Hibernate Tools 4.3.1
+// Generated Jul 12, 2018 5:22:44 PM by Hibernate Tools 4.3.1
 
 
 import javax.persistence.Column;

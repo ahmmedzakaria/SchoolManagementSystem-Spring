@@ -46,7 +46,7 @@ public class IndexController {
     }
     
     //Office
-       @RequestMapping("/office/home")
+    @RequestMapping("/office/home")
     public String officeHome() {
         return "office/office";
     }
@@ -59,5 +59,26 @@ public class IndexController {
     @RequestMapping("/office/viewstudents")
     public String viewStudent() {
         return "office/viewstudents";
+    }
+    
+//    Teacher
+     @RequestMapping("/teacher/home")
+    public String teacherHome() {
+        return "teacher/teacher";
+    }
+    
+    @RequestMapping("/teacher/addattendance")
+    public String addAttendance() {
+        return "teacher/addattendance";
+    }
+    
+    @RequestMapping("/teacher/addmarks")
+    public String addMarks() {
+        return "teacher/addmarks";
+    }
+    
+    @RequestMapping("/teacher/viewattendance")
+    public String viewAttendance() {
+        return "teacher/viewattendance";
     }
 }

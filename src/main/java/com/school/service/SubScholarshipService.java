@@ -5,13 +5,15 @@
  */
 package com.school.service;
 
-import com.school.dao.support.ISubScholarshipDao;
+
 import com.school.domain.entity.SubScholarship;
 import com.school.domain.support.CommonSupport;
-import com.school.service.support.ISubScholarshipService;
 import com.school.support.IGetAll;
+import com.school.support.ISupportDao;
+import com.school.support.ISupportService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 /**
@@ -19,10 +21,11 @@ import org.springframework.stereotype.Service;
  * @author Faculty
  */
 @Service
-public class SubScholarshipService implements ISubScholarshipService<SubScholarship> {
+public class SubScholarshipService implements ISupportService<SubScholarship> {
 
+    @Qualifier(value = "subScholarshipDao")
     @Autowired
-    private ISubScholarshipDao<SubScholarship> iSubScholarshipDao;
+    private ISupportDao<SubScholarship> iSubScholarshipDao;
 
     @Autowired
     private CommonSuppotService commonSuppotService;

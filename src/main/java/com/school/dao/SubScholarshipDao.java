@@ -5,8 +5,8 @@
  */
 package com.school.dao;
 
-import com.school.dao.support.ISubScholarshipDao;
 import com.school.domain.entity.SubScholarship;
+import com.school.support.ISupportDao;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate4.HibernateTemplate;
@@ -19,7 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Transactional
 @Repository
-public class SubScholarshipDao implements ISubScholarshipDao<SubScholarship>{
+public class SubScholarshipDao implements ISupportDao<SubScholarship>{
     
     @Autowired
     private HibernateTemplate hibernateTemplate;

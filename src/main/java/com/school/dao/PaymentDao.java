@@ -5,8 +5,8 @@
  */
 package com.school.dao;
 
-import com.school.dao.support.IPaymentDao;
 import com.school.domain.entity.Payment;
+import com.school.support.ISupportDao;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate4.HibernateTemplate;
@@ -19,7 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Transactional
 @Repository
-public class PaymentDao implements IPaymentDao<Payment>{
+public class PaymentDao implements ISupportDao<Payment>{
     
     @Autowired
     private HibernateTemplate hibernateTemplate;

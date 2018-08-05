@@ -6,14 +6,13 @@
 package com.school.controller;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.school.domain.entity.Religion;
-import com.school.domain.entity.Role;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.school.domain.entity.StudentRecordBs;
 
 
 import com.school.domain.support.CommonSupport;
 import com.school.domain.support.StudentInfo;
-import com.school.service.support.IStudentInfoService;
+import com.school.support.ISupportService;
 import com.school.support.MyUtil;
 
 import java.util.List;
@@ -39,33 +38,61 @@ public class StudentInfoController {
 
     @Qualifier(value = "studentInfoService")
     @Autowired
-    private IStudentInfoService<StudentInfo> iStudentInfoService;
+    private ISupportService<StudentInfo> iStudentInfoService;
+
+    @RequestMapping(value = "/service/{id}", method = RequestMethod.GET)
+    @JsonIgnore
+    public ResponseEntity<CommonSupport> getCommonSupportService(@PathVariable("id") Integer id) {
+        CommonSupport service = iStudentInfoService.getCommonSupportService();
+        return new ResponseEntity<CommonSupport>(service, HttpStatus.OK);
+    }
     
-//    @Qualifier(value = "studentRecordBsService")
-//     @Autowired
-//    private IStudentRecordBsService<StudentRecordBs> iStudentRecordBsService;
-   
-
-//    @RequestMapping("/office/home")
-//    public String officeHome() {
-//        return "office/student_info";
+     @RequestMapping(value = "/studentfilter/{sessionId}", method = RequestMethod.GET)
+    @JsonIgnore
+    public ResponseEntity<StudentInfo> getAllBySession(@PathVariable("sessionId") Integer sessionId) {
+        StudentInfo studentInfo = iStudentInfoService.getAllBySessionInfo(sessionId);
+        return new ResponseEntity<StudentInfo>(studentInfo, HttpStatus.OK);
+    }
+    
+    @RequestMapping(value = "/studentfilter/{sessionId}/{classId}", method = RequestMethod.GET)
+    @JsonIgnore
+    public ResponseEntity<StudentInfo> getAllByClass(@PathVariable("sessionId") Integer sessionId,@PathVariable("classId") Integer classId) {
+        StudentInfo studentInfo = iStudentInfoService.getAllByClassInfo(sessionId,classId);
+        return new ResponseEntity<StudentInfo>(studentInfo, HttpStatus.OK);
+    }
+    
+    @RequestMapping(value = "/studentfilter/{sessionId}/{classId}/{sectionId}", method = RequestMethod.GET)
+    @JsonIgnore
+    public ResponseEntity<StudentInfo> getAllByClassAndSection(@PathVariable("sessionId") Integer sessionId,@PathVariable("classId") Integer classId, @PathVariable("sectionId") Integer sectionId) {
+        System.out.println("getAllByClassAndSection in StudentinfoControlelr");
+        StudentInfo studentInfo = iStudentInfoService.getAllByClassAndSectionInfo(sessionId,classId,sectionId);
+        return new ResponseEntity<StudentInfo>(studentInfo, HttpStatus.OK);
+    }
+    
+     @RequestMapping(value = "/studentfilter/{sessionId}/{classId}/{sectionId}/{groupId}", method = RequestMethod.GET)
+    @JsonIgnore
+    public ResponseEntity<StudentInfo> getAllByClassSectionGroup(@PathVariable("sessionId") Integer sessionId,@PathVariable("classId") Integer classId,@PathVariable("sectionId") Integer sectionId,@PathVariable("groupId") Integer groupId) {
+        StudentInfo StudentInfo = iStudentInfoService.getAllByClassSectionGroupInfo(sessionId,classId,sectionId,groupId);
+        return new ResponseEntity<StudentInfo>(StudentInfo, HttpStatus.OK);
+    }
+    
+//     @RequestMapping(value = "/maxroll/{sessionId}/{classId}/{sectionId}/{groupId}", method = RequestMethod.GET)
+//    @JsonIgnore
+//    public ResponseEntity<Integer> getMaxRoll(@PathVariable("sessionId") Integer sessionId,@PathVariable("classId") Integer classId,@PathVariable("sectionId") Integer sectionId,@PathVariable("groupId") Integer groupId) {
+//        int maxRoll = iStudentInfoService.getMaxRoll(sessionId,classId,sectionId,groupId);
+//        MyUtil.print("Max Roll", maxRoll+"");
+//        return new ResponseEntity<Integer>(maxRoll, HttpStatus.OK);
 //    }
-//    
-//    @RequestMapping("/admin/home")
-//    public String adminHome() {
-//        return "admin/index";
-//    }
-//    
-//    @RequestMapping("/admin/adduser")
-//    public String addUser() {
-//        return "admin/adduser";
-//    }
-//    
-//    @RequestMapping("/admin/viewuser")
-//    public String viewUser() {
-//        return "admin/viewuser";
-//    }
-
+    
+     @RequestMapping(value = "/maxroll/{sessionId}/{classId}/{sectionId}/{groupId}", method = RequestMethod.GET)
+    @JsonIgnore
+    public ResponseEntity<StudentRecordBs> getMaxRoll(@PathVariable("sessionId") Integer sessionId,@PathVariable("classId") Integer classId,@PathVariable("sectionId") Integer sectionId,@PathVariable("groupId") Integer groupId) {
+        int maxRoll = iStudentInfoService.getMaxRoll(sessionId,classId,sectionId,groupId);
+        MyUtil.print("Max Roll", maxRoll+"");
+        StudentRecordBs rbs=new StudentRecordBs();
+        rbs.setRollNumber(maxRoll);
+        return new ResponseEntity<StudentRecordBs>(rbs, HttpStatus.OK);
+    }
 
     @RequestMapping(value = "/studentinfolist", method = RequestMethod.GET)
     @JsonIgnore
@@ -73,25 +100,24 @@ public class StudentInfoController {
         List<StudentInfo> list = iStudentInfoService.getAll();
         return new ResponseEntity<List<StudentInfo>>(list, HttpStatus.OK);
     }
-
-    @RequestMapping(value = "/service/{id}", method = RequestMethod.GET)
+    
+    @RequestMapping(value = "/role", method = RequestMethod.GET)
     @JsonIgnore
-    public ResponseEntity<CommonSupport> getCommonSupportService(@PathVariable("id") Integer id) {
-        CommonSupport service = iStudentInfoService.getCommonSupportService();
-        
-        return new ResponseEntity<CommonSupport>(service, HttpStatus.OK);
+    public ResponseEntity<List<StudentInfo>> getAllRoleInfo() {
+        List<StudentInfo> list = iStudentInfoService.getAllWithoutStudent();
+        return new ResponseEntity<List<StudentInfo>>(list, HttpStatus.OK);
     }
+
     @RequestMapping(value = "/studentinfolist/{id}", method = RequestMethod.GET)
     public ResponseEntity<StudentInfo> getStudentinfo(@PathVariable("id") Integer id) {
+        ObjectMapper mapper = new ObjectMapper();
+    
         StudentInfo obj = iStudentInfoService.getById(id);
         return new ResponseEntity<StudentInfo>(obj, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/studentinfolist", method = RequestMethod.POST)
     public ResponseEntity<Void> addStudentInfo(@RequestBody StudentInfo obj, UriComponentsBuilder builder) {
-        StudentRecordBs rbs=obj.getStudentRecordBsList().get(0);
-        MyUtil.print("Roll", ""+rbs.getRollNumber());
-        
         boolean flag = iStudentInfoService.add(obj);
         if (flag == false) {
             return new ResponseEntity<Void>(HttpStatus.CONFLICT);

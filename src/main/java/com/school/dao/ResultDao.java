@@ -5,8 +5,8 @@
  */
 package com.school.dao;
 
-import com.school.dao.support.IResultDao;
 import com.school.domain.entity.Result;
+import com.school.support.ISupportDao;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate4.HibernateTemplate;
@@ -19,7 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Transactional
 @Repository
-public class ResultDao implements IResultDao<Result>{
+public class ResultDao implements ISupportDao<Result>{
     
     @Autowired
     private HibernateTemplate hibernateTemplate;

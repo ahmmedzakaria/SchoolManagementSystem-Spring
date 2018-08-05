@@ -10,7 +10,7 @@
         <span class="d-none d-md-inline">Add Students</span>
 </a>
 
-    <a href="viewstudents" class="list-group-item d-inline-block collapsed">
+    <a href="viewstudents" ng-click="studentCtrl.viewStudents()" class="list-group-item d-inline-block collapsed">
         <span class="d-none d-md-inline">View Students</span>
     </a>
 

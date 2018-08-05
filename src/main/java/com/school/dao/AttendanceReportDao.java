@@ -5,8 +5,8 @@
  */
 package com.school.dao;
 
-import com.school.dao.support.IAttendanceReportDao;
 import com.school.domain.entity.AttendanceReport;
+import com.school.support.ISupportDao;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate4.HibernateTemplate;
@@ -19,7 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Transactional
 @Repository
-public class AttendanceReportDao implements IAttendanceReportDao<AttendanceReport>{
+public class AttendanceReportDao implements ISupportDao<AttendanceReport>{
     
     @Autowired
     private HibernateTemplate hibernateTemplate;
@@ -51,6 +51,13 @@ public class AttendanceReportDao implements IAttendanceReportDao<AttendanceRepor
     @Override
     public AttendanceReport getById(int id) {
         return hibernateTemplate.get(AttendanceReport.class, id);
+    }
+    
+    public AttendanceReport getAttendanceReportByMonth(int recordBsId, int monthId){
+        String hql = "FROM AttendanceReport obj where obj.studentRecordBs.recordBsId=? and obj.months.monthId=?";
+        List<AttendanceReport> aList=(List<AttendanceReport>) hibernateTemplate.find(hql,recordBsId,monthId);
+        
+        return (aList!=null && aList.size()>0)?aList.get(0):null;
     }
 
     

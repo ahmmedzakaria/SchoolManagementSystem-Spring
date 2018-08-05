@@ -14,7 +14,7 @@
         <a href="adduser" class="list-group-item" ng-click="studentCtrl.addOfficeStuff()">Office Stuff</a>
     </div>
 
-    <a href="viewusers" class="list-group-item d-inline-block collapsed">
+    <a href="viewusers" ng-click="studentCtrl.viewUsers()" class="list-group-item d-inline-block collapsed">
         <span class="d-none d-md-inline">View Users</span>
     </a>
 

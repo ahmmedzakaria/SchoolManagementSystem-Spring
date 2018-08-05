@@ -17,8 +17,13 @@ import java.util.List;
  * @author User
  */
 public class StudentInfo {
-    private int studentInfoId;
+//    private int studentInfoId;
     private Users users;
+//    private IdSupport idSupport;
+//    private Attendance attendance;
+//    private AttendanceReport attendanceReport;
+//    private Marks marks;
+//    private StudentRecordBs studentRecordBs;
     private List<StudentRecordBs> studentRecordBsList;
     private List<Attendance> attendancesList;
     private List<AttendanceReport> AttendanceReportList;
@@ -63,14 +68,46 @@ public class StudentInfo {
     public void setMarkList(List<Marks> markList) {
         this.markList = markList;
     }
+//
+//    public IdSupport getIdSupport() {
+//        return idSupport;
+//    }
+//
+//    public void setIdSupport(IdSupport idSupport) {
+//        this.idSupport = idSupport;
+//    }
+//
+//    public Attendance getAttendance() {
+//        return attendance;
+//    }
+//
+//    public void setAttendance(Attendance attendance) {
+//        this.attendance = attendance;
+//    }
+//
+//    public AttendanceReport getAttendanceReport() {
+//        return attendanceReport;
+//    }
+//
+//    public void setAttendanceReport(AttendanceReport attendanceReport) {
+//        this.attendanceReport = attendanceReport;
+//    }
+//
+//    public Marks getMarks() {
+//        return marks;
+//    }
+//
+//    public void setMarks(Marks marks) {
+//        this.marks = marks;
+//    }
 
-    public int getStudentInfoId() {
-        return users.getUserId();
-    }
-
-    public void setStudentInfoId(int studentInfoId) {
-        this.studentInfoId = users.getUserId();
-    }
+//    public StudentRecordBs getStudentRecordBs() {
+//        return studentRecordBs;
+//    }
+//
+//    public void setStudentRecordBs(StudentRecordBs studentRecordBs) {
+//        this.studentRecordBs = studentRecordBs;
+//    }
 
     
     

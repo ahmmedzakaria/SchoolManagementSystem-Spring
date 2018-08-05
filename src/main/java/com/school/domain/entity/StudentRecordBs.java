@@ -84,7 +84,7 @@ public class StudentRecordBs  implements java.io.Serializable {
         this.recordBsId = recordBsId;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
+@ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="class_id", nullable=false)
     public Classes getClasses() {
         return this.classes;
@@ -94,7 +94,7 @@ public class StudentRecordBs  implements java.io.Serializable {
         this.classes = classes;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
+@ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="group_id", nullable=false)
     public Groups getGroups() {
         return this.groups;
@@ -104,7 +104,7 @@ public class StudentRecordBs  implements java.io.Serializable {
         this.groups = groups;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
+@ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="section_id", nullable=false)
     public Section getSection() {
         return this.section;
@@ -114,7 +114,7 @@ public class StudentRecordBs  implements java.io.Serializable {
         this.section = section;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
+@ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="session_id", nullable=false)
     public StudentSession getStudentSession() {
         return this.studentSession;
@@ -124,7 +124,7 @@ public class StudentRecordBs  implements java.io.Serializable {
         this.studentSession = studentSession;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
+@ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="user_id", nullable=false)
     public Users getUsers() {
         return this.users;
@@ -206,6 +206,11 @@ public class StudentRecordBs  implements java.io.Serializable {
     
     public void setRoutineMaintainers(Set<RoutineMaintainer> routineMaintainers) {
         this.routineMaintainers = routineMaintainers;
+    }
+
+    @Override
+    public String toString() {
+        return "StudentRecordBs{" + "recordBsId=" + recordBsId + ", classes=" + classes + ", groups=" + groups + ", section=" + section + ", studentSession=" + studentSession + ", users=" + users + ", rollNumber=" + rollNumber + ", recordDate=" + recordDate + '}';
     }
 
 

@@ -5,13 +5,14 @@
  */
 package com.school.service;
 
-import com.school.dao.support.IRoutineMaintainerDao;
 import com.school.domain.entity.RoutineMaintainer;
 import com.school.domain.support.CommonSupport;
-import com.school.service.support.IRoutineMaintainerService;
 import com.school.support.IGetAll;
+import com.school.support.ISupportDao;
+import com.school.support.ISupportService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 /**
@@ -19,10 +20,11 @@ import org.springframework.stereotype.Service;
  * @author Faculty
  */
 @Service
-public class RoutineMaintainerService implements IRoutineMaintainerService<RoutineMaintainer> {
+public class RoutineMaintainerService implements ISupportService<RoutineMaintainer> {
 
+    @Qualifier(value = "routineMaintainerDao")
     @Autowired
-    private IRoutineMaintainerDao<RoutineMaintainer> iRoutineMaintainerDao;
+    private ISupportDao<RoutineMaintainer> iRoutineMaintainerDao;
 
     @Autowired
     private CommonSuppotService commonSuppotService;

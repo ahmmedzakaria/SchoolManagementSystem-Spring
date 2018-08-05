@@ -6,16 +6,17 @@
 package com.school.service;
 
 
-import com.school.dao.support.IMarksDao;
-import com.school.domain.entity.Role;
 import com.school.domain.entity.Marks;
+
 import com.school.domain.support.CommonSupport;
-import com.school.service.support.IMarksService;
-import com.school.service.support.IUserService;
+import com.school.domain.support.StudentInfo;
 import com.school.support.IGetAll;
-import java.util.Date;
+import com.school.support.ISupportDao;
+import com.school.support.ISupportService;
+import com.school.support.MyUtil;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 /**
@@ -23,10 +24,11 @@ import org.springframework.stereotype.Service;
  * @author Faculty
  */
 @Service
-public class MarksService implements IMarksService<Marks>{
+public class MarksService implements ISupportService<StudentInfo>{
     
+    @Qualifier(value = "marksDao")
     @Autowired
-    private IMarksDao<Marks> iMarksDao;
+    private ISupportDao<Marks> iMarksDao;
     
     @Autowired
     private CommonSuppotService commonSuppotService;
@@ -35,13 +37,17 @@ public class MarksService implements IMarksService<Marks>{
     private IGetAll iGetAll;
 
     @Override
-    public boolean add(Marks obj) {
-        iMarksDao.add(obj);
+    public boolean add(StudentInfo obj) {
+        List<Marks> markList=obj.getMarkList();
+        MyUtil.print("markList Size", markList.size()+"");
+        markList.forEach(a->{
+            iMarksDao.add(a);
+        });
         return true;
     }
 
     @Override
-    public int addAll(List<Marks> list) {
+    public int addAll(List<StudentInfo> list) {
         return 0;
     }
     
@@ -52,21 +58,23 @@ public class MarksService implements IMarksService<Marks>{
     }
 
     @Override
-    public boolean update(Marks obj) {
+    public boolean update(StudentInfo obj) {
        
-        iMarksDao.update(obj);
+       // iMarksDao.update(obj);
         return true;
     }
 
     @Override
-    public List<Marks> getAll() {
+    public List<StudentInfo> getAll() {
            
-        return iMarksDao.getAll();
+        //return iMarksDao.getAll();
+        return null;
     }
 
     @Override
-    public Marks getById(int id) {   
-        return iMarksDao.getById(id);
+    public StudentInfo getById(int id) {   
+        //return iMarksDao.getById(id);
+        return null;
     }
 
     @Override

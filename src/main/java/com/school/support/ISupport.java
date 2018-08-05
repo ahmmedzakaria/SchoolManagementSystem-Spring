@@ -20,4 +20,10 @@ public interface ISupport<T> {
     default int addAll(List<T> list){
         return 0;
     }
+    default List<T> getAllWithoutStudent(){return null;}
+    
+
+   default int getMaxRoll(int sessionId,int classId, int sectionId, int groupId){return 0;}
+   
+ 
 }

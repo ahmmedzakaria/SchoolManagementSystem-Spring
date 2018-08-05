@@ -6,13 +6,13 @@
 package com.school.controller;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.school.domain.entity.Religion;
-import com.school.domain.entity.Role;
+
 import com.school.domain.entity.SubScholarship;
 import com.school.domain.support.CommonSupport;
-import com.school.service.support.ISubScholarshipService;
+import com.school.support.ISupportService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,8 +31,9 @@ import org.springframework.web.util.UriComponentsBuilder;
 @RequestMapping("/subscholarshipinfo")
 public class SubScholarshipController {
 
+    @Qualifier(value = "subScholarshipService")
     @Autowired
-    private ISubScholarshipService<SubScholarship> iSubScholarshipService;
+    private ISupportService<SubScholarship> iSubScholarshipService;
    
 
     @RequestMapping("/home")

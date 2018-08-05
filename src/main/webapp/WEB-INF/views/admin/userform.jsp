@@ -33,5 +33,3 @@
                   
                         <!--File Upload-->
                     <input type="file" custom-on-change="uploadFile" id="fileSelected">
-
-                    <br>

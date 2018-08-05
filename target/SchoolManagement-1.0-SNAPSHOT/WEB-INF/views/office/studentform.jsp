@@ -9,25 +9,38 @@
 <input type="text" name="lastName" ng-model="studentCtrl.studentInfo.users.lastName"  placeholder="Your Last Name" required/> 
 <p><span ng-show="studentInfoForm.lastName.$error.required" class="msg-val">Location is required.</span></p>  
 
+<label for="studentSession" class="lbl"><b>Session</b></label>
+<select class="form-control" id="studentSession"  ng-model="studentCtrl.studentRecordBs.studentSession" ng-options="studentSession.sessionName for studentSession in studentCtrl.commonSupport.studentSessionsList">
+<option value="" disabled selected>{{studentCtrl.studentSession.sessionName}}</option>
+</select>
+
 <label for="class" class="lbl"><b>Class</b></label>
-<select class="form-control" id="class"  ng-model="studentCtrl.studentRecordBs.classes" ng-options="classes.className for classes in studentCtrl.commonSupport.classList">
+<select ng-change="studentCtrl.showGroup()" class="form-control" id="class"  ng-model="studentCtrl.studentRecordBs.classes" ng-options="classes.className for classes in studentCtrl.commonSupport.classList">
+<option value="" disabled selected>{{studentCtrl.classes.className}}</option>
 </select>
 
 <label for="section" class="lbl"><b>Section</b></label>
-<select class="form-control" id="section"  ng-model="studentCtrl.studentRecordBs.section" ng-options="section.sectionName for section in studentCtrl.commonSupport.sectionList">
+<select ng-change="studentCtrl.setGroupIfNeed()" class="form-control" id="section"  ng-model="studentCtrl.studentRecordBs.section" ng-options="section.sectionName for section in studentCtrl.commonSupport.sectionList">
+<option value="" disabled selected>{{studentCtrl.section.sectionName}}</option>
 </select>
 
-<label for="groups" class="lbl"><b>Group</b></label>
-<select class="form-control" id="groups"  ng-model="studentCtrl.studentRecordBs.groups" ng-options="groups.groupName for groups in studentCtrl.commonSupport.groupsList">
+<label ng-hide="studentCtrl.groupFlag" for="groups" class="lbl"><b>Group</b></label>
+<select ng-hide="studentCtrl.groupFlag" ng-change="studentCtrl.getMaxRoll()" class="form-control" id="groups"  ng-model="studentCtrl.studentRecordBs.groups" ng-options="groups.groupName for groups in studentCtrl.commonSupport.groupsList">
+<option value="" disabled selected>{{studentCtrl.groups.groupName}}</option>
 </select>
 
-<label for="studentSessions" class="lbl"><b>Session</b></label>
-<select class="form-control" id="studentSessions"  ng-model="studentCtrl.studentRecordBs.studentSessions" ng-options="studentSessions.sessionName for studentSessions in studentCtrl.commonSupport.studentSessionsList">
-</select>
 
 <label for="roll" class="lbl"><b>Student Roll</b></label>
 <input type="text" name="rollNumber" ng-model="studentCtrl.studentRecordBs.rollNumber" placeholder="Your Roll" required/> 
 <p><span ng-show="studentInfoForm.rollNumber.$error.required" class="msg-val">Roll Number is required.</span></p>  
+
+<label for="userName" class="lbl"><b>User Name</b></label>
+<input type="text" name="userName" ng-model="studentCtrl.studentInfo.users.userName"  placeholder="Your User Name" required/> 
+<p><span ng-show="studentInfoForm.userName.$error.required" class="msg-val">Phone No is required.</span></p>  
+
+<label for="userPassword" class="lbl"><b>Password</b></label>
+<input type="text" name="userPassword" ng-model="studentCtrl.studentInfo.users.userPassword"  placeholder="Your Password" required/> 
+<p><span ng-show="studentInfoForm.userPassword.$error.required" class="msg-val">Mobile No is required.</span></p>  
 
 <label for="email" class="lbl"><b>Email</b></label>
 <input type="text" name="email" ng-model="studentCtrl.studentInfo.users.email"  placeholder="Your Email" required/> 

@@ -8,9 +8,10 @@ package com.school.controller;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.school.domain.entity.Payment;
 import com.school.domain.support.CommonSupport;
-import com.school.service.support.IPaymentService;
+import com.school.support.ISupportService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,8 +30,9 @@ import org.springframework.web.util.UriComponentsBuilder;
 @RequestMapping("/paymentinfo")
 public class PaymentController {
 
+    @Qualifier(value = "paymentService")
     @Autowired
-    private IPaymentService<Payment> iPaymentService;
+    private ISupportService<Payment> iPaymentService;
    
 
     @RequestMapping("/home")

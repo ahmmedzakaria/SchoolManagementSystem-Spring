@@ -24,7 +24,11 @@
 <!--Controllers-->
 
 
+<script src="${pageContext.request.contextPath}/static/js/controller/user_info_controller.js" type="text/javascript"></script>
 <script src="${pageContext.request.contextPath}/static/js/controller/student_info_controller.js" type="text/javascript"></script>
+
+
+
 
 
 </body>

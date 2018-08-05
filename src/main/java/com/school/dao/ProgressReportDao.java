@@ -5,8 +5,8 @@
  */
 package com.school.dao;
 
-import com.school.dao.support.IProgressReportDao;
 import com.school.domain.entity.ProgressReport;
+import com.school.support.ISupportDao;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate4.HibernateTemplate;
@@ -19,7 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Transactional
 @Repository
-public class ProgressReportDao implements IProgressReportDao<ProgressReport>{
+public class ProgressReportDao implements ISupportDao<ProgressReport>{
     
     @Autowired
     private HibernateTemplate hibernateTemplate;

@@ -6,11 +6,11 @@
 package com.school.controller;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.school.domain.entity.Marks;
 import com.school.domain.support.CommonSupport;
-import com.school.service.support.IMarksService;
-import java.util.List;
+import com.school.domain.support.StudentInfo;
+import com.school.support.ISupportService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,8 +29,9 @@ import org.springframework.web.util.UriComponentsBuilder;
 @RequestMapping("/marksinfo")
 public class MarksController {
 
+    @Qualifier(value = "marksService")
     @Autowired
-    private IMarksService<Marks> iMarksService;
+    private ISupportService<StudentInfo> iMarksService;
    
 
     @RequestMapping("/home")
@@ -39,12 +40,12 @@ public class MarksController {
     }
 
 
-    @RequestMapping(value = "/markslist", method = RequestMethod.GET)
-    @JsonIgnore
-    public ResponseEntity<List<Marks>> getAllMarks() {
-        List<Marks> list = iMarksService.getAll();
-        return new ResponseEntity<List<Marks>>(list, HttpStatus.OK);
-    }
+//    @RequestMapping(value = "/markslist", method = RequestMethod.GET)
+//    @JsonIgnore
+//    public ResponseEntity<List<Marks>> getAllMarks() {
+//        List<Marks> list = iMarksService.getAll();
+//        return new ResponseEntity<List<Marks>>(list, HttpStatus.OK);
+//    }
 
     @RequestMapping(value = "/service", method = RequestMethod.GET)
     @JsonIgnore
@@ -52,28 +53,28 @@ public class MarksController {
         CommonSupport service = iMarksService.getCommonSupportService();
         return new ResponseEntity<CommonSupport>(service, HttpStatus.OK);
     }
-    @RequestMapping(value = "/marks/{id}", method = RequestMethod.GET)
-    public ResponseEntity<Marks> getUser(@PathVariable("id") Integer id) {
-        Marks obj = iMarksService.getById(id);
-        return new ResponseEntity<Marks>(obj, HttpStatus.OK);
-    }
+//    @RequestMapping(value = "/marks/{id}", method = RequestMethod.GET)
+//    public ResponseEntity<Marks> getUser(@PathVariable("id") Integer id) {
+//        Marks obj = iMarksService.getById(id);
+//        return new ResponseEntity<Marks>(obj, HttpStatus.OK);
+//    }
 
     @RequestMapping(value = "/marks", method = RequestMethod.POST)
-    public ResponseEntity<Void> addMarks(@RequestBody Marks obj, UriComponentsBuilder builder) {
+    public ResponseEntity<Void> addMarks(@RequestBody StudentInfo obj, UriComponentsBuilder builder) {
         boolean flag = iMarksService.add(obj);
         if (flag == false) {
             return new ResponseEntity<Void>(HttpStatus.CONFLICT);
         }
         HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(builder.path("/marks/{id}").buildAndExpand(obj.getMarksId()).toUri());
+        headers.setLocation(builder.path("/marks/{id}").buildAndExpand(1).toUri());
         return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
     }
 
-    @RequestMapping(value = "/marks/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<Marks> updateUser(@RequestBody Marks obj) {
-        iMarksService.update(obj);
-        return new ResponseEntity<Marks>(obj, HttpStatus.OK);
-    }
+//    @RequestMapping(value = "/marks/{id}", method = RequestMethod.PUT)
+//    public ResponseEntity<Marks> updateUser(@RequestBody Marks obj) {
+//        iMarksService.update(obj);
+//        return new ResponseEntity<Marks>(obj, HttpStatus.OK);
+//    }
 
     @RequestMapping(value = "/marks/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<Void> deleteUser(@PathVariable("id") Integer id) {

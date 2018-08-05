@@ -5,13 +5,14 @@
  */
 package com.school.service;
 
-import com.school.dao.support.INoticeDao;
 import com.school.domain.entity.Notice;
 import com.school.domain.support.CommonSupport;
-import com.school.service.support.INoticeService;
 import com.school.support.IGetAll;
+import com.school.support.ISupportDao;
+import com.school.support.ISupportService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 /**
@@ -19,10 +20,11 @@ import org.springframework.stereotype.Service;
  * @author Faculty
  */
 @Service
-public class NoticeService implements INoticeService<Notice> {
+public class NoticeService implements ISupportService<Notice> {
 
+    @Qualifier(value = "noticeDao")
     @Autowired
-    private INoticeDao<Notice> iNoticeDao;
+    private ISupportDao<Notice> iNoticeDao;
 
     @Autowired
     private CommonSuppotService commonSuppotService;

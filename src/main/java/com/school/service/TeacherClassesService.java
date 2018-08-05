@@ -5,13 +5,15 @@
  */
 package com.school.service;
 
-import com.school.dao.support.ITeacherClassesDao;
+
 import com.school.domain.entity.TeacherClasses;
 import com.school.domain.support.CommonSupport;
-import com.school.service.support.ITeacherClassesService;
 import com.school.support.IGetAll;
+import com.school.support.ISupportDao;
+import com.school.support.ISupportService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 /**
@@ -19,10 +21,11 @@ import org.springframework.stereotype.Service;
  * @author Faculty
  */
 @Service
-public class TeacherClassesService implements ITeacherClassesService<TeacherClasses> {
-
+public class TeacherClassesService implements ISupportService<TeacherClasses> {
+    
+    @Qualifier(value = "teacherClassesDao")
     @Autowired
-    private ITeacherClassesDao<TeacherClasses> iTeacherClassesDao;
+    private ISupportDao<TeacherClasses> iTeacherClassesDao;
 
     @Autowired
     private CommonSuppotService commonSuppotService;

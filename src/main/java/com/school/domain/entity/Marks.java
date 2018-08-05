@@ -1,5 +1,5 @@
 package com.school.domain.entity;
-// Generated Jul 9, 2018 4:05:01 PM by Hibernate Tools 4.3.1
+// Generated Aug 3, 2018 10:07:42 PM by Hibernate Tools 4.3.1
 
 
 import javax.persistence.Column;
@@ -25,7 +25,7 @@ public class Marks  implements java.io.Serializable {
      private Integer marksId;
      private Exams exams;
      private Grade grade;
-     private StudentRecordDt studentRecordDt;
+     private StudentRecordBs studentRecordBs;
      private Subjects subjects;
      private int writtenMarks;
      private int mcqMarks;
@@ -34,10 +34,10 @@ public class Marks  implements java.io.Serializable {
     public Marks() {
     }
 
-    public Marks(Exams exams, Grade grade, StudentRecordDt studentRecordDt, Subjects subjects, int writtenMarks, int mcqMarks, int practicalMarks) {
+    public Marks(Exams exams, Grade grade, StudentRecordBs studentRecordBs, Subjects subjects, int writtenMarks, int mcqMarks, int practicalMarks) {
        this.exams = exams;
        this.grade = grade;
-       this.studentRecordDt = studentRecordDt;
+       this.studentRecordBs = studentRecordBs;
        this.subjects = subjects;
        this.writtenMarks = writtenMarks;
        this.mcqMarks = mcqMarks;
@@ -77,13 +77,13 @@ public class Marks  implements java.io.Serializable {
     }
 
 @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="record_dt_id", nullable=false)
-    public StudentRecordDt getStudentRecordDt() {
-        return this.studentRecordDt;
+    @JoinColumn(name="record_bs_id", nullable=false)
+    public StudentRecordBs getStudentRecordBs() {
+        return this.studentRecordBs;
     }
     
-    public void setStudentRecordDt(StudentRecordDt studentRecordDt) {
-        this.studentRecordDt = studentRecordDt;
+    public void setStudentRecordBs(StudentRecordBs studentRecordBs) {
+        this.studentRecordBs = studentRecordBs;
     }
 
 @ManyToOne(fetch=FetchType.LAZY)

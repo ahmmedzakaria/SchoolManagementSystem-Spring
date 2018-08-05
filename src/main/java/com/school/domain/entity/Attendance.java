@@ -1,5 +1,5 @@
 package com.school.domain.entity;
-// Generated Jul 9, 2018 4:05:01 PM by Hibernate Tools 4.3.1
+// Generated Aug 3, 2018 10:07:42 PM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -26,19 +26,17 @@ public class Attendance  implements java.io.Serializable {
 
 
      private Integer attendanceId;
-     private Groups groups;
+     private Months months;
      private StudentRecordBs studentRecordBs;
-     private Users users;
-     private boolean attendanceStatus;
+     private int attendanceStatus;
      private Date attendanceDate;
 
     public Attendance() {
     }
 
-    public Attendance(Groups groups, StudentRecordBs studentRecordBs, Users users, boolean attendanceStatus, Date attendanceDate) {
-       this.groups = groups;
+    public Attendance(Months months, StudentRecordBs studentRecordBs, int attendanceStatus, Date attendanceDate) {
+       this.months = months;
        this.studentRecordBs = studentRecordBs;
-       this.users = users;
        this.attendanceStatus = attendanceStatus;
        this.attendanceDate = attendanceDate;
     }
@@ -56,13 +54,13 @@ public class Attendance  implements java.io.Serializable {
     }
 
 @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="group_id", nullable=false)
-    public Groups getGroups() {
-        return this.groups;
+    @JoinColumn(name="month_id", nullable=false)
+    public Months getMonths() {
+        return this.months;
     }
     
-    public void setGroups(Groups groups) {
-        this.groups = groups;
+    public void setMonths(Months months) {
+        this.months = months;
     }
 
 @ManyToOne(fetch=FetchType.LAZY)
@@ -75,28 +73,18 @@ public class Attendance  implements java.io.Serializable {
         this.studentRecordBs = studentRecordBs;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="user_id", nullable=false)
-    public Users getUsers() {
-        return this.users;
-    }
-    
-    public void setUsers(Users users) {
-        this.users = users;
-    }
-
     
     @Column(name="attendance_status", nullable=false)
-    public boolean isAttendanceStatus() {
+    public int getAttendanceStatus() {
         return this.attendanceStatus;
     }
     
-    public void setAttendanceStatus(boolean attendanceStatus) {
+    public void setAttendanceStatus(int attendanceStatus) {
         this.attendanceStatus = attendanceStatus;
     }
 
     @Temporal(TemporalType.DATE)
-    @Column(name="attendance_date", nullable=false, length=0)
+    @Column(name="attendance_date", nullable=false, length=10)
     public Date getAttendanceDate() {
         return this.attendanceDate;
     }

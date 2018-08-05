@@ -2,14 +2,15 @@ package com.school.domain.entity;
 // Generated Jul 9, 2018 4:05:01 PM by Hibernate Tools 4.3.1
 
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -32,6 +33,7 @@ import org.hibernate.annotations.DynamicUpdate;
     ,catalog="db_school"
 )
 @DynamicUpdate(value = true)
+@JsonInclude(Include.NON_NULL)
 public class Users  implements java.io.Serializable {
 
 
@@ -54,7 +56,7 @@ public class Users  implements java.io.Serializable {
      private Set<Students> studentses = new HashSet<Students>(0);
      private Set<RoutineMaintainer> routineMaintainers = new HashSet<RoutineMaintainer>(0);
      private Set<TeacherClasses> teacherClasseses = new HashSet<TeacherClasses>(0);
-     private Set<StudentRecordBs> studentRecordBses = new HashSet<StudentRecordBs>(0);
+     private Set<StudentRecordBs>studentRecordBses = new HashSet<StudentRecordBs>(0);
 
     public Users() {
     }
@@ -67,7 +69,7 @@ public class Users  implements java.io.Serializable {
         this.firstName = firstName;
         this.lastName = lastName;
     }
-    public Users(Gender gender, Religion religion, Role role, String firstName, String lastName, String email, String userName, String userPassword, String contactNumber, String imagePath, Date registerDate, String presentAddress, String permanentAddress, Date dob, Set<Payment> payments, Set<Students> studentses, Set<RoutineMaintainer> routineMaintainers, Set<TeacherClasses> teacherClasseses, Set<StudentRecordBs> studentRecordBses) {
+    public Users(Gender gender, Religion religion, Role role, String firstName, String lastName, String email, String userName, String userPassword, String contactNumber, String imagePath, Date registerDate, String presentAddress, String permanentAddress, Date dob, Set<Payment> payments, Set<Students> studentses, Set<RoutineMaintainer> routineMaintainers, Set<TeacherClasses> teacherClasseses, Set<StudentRecordBs>studentRecordBses) {
        this.gender = gender;
        this.religion = religion;
        this.role = role;
@@ -278,11 +280,11 @@ public class Users  implements java.io.Serializable {
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="users", cascade = CascadeType.ALL)
-    public Set<StudentRecordBs> getStudentRecordBses() {
+    public Set<StudentRecordBs>getStudentRecordBses() {
         return this.studentRecordBses;
     }
     
-    public void setStudentRecordBses(Set<StudentRecordBs> studentRecordBses) {
+    public void setStudentRecordBses(Set<StudentRecordBs>studentRecordBses) {
         this.studentRecordBses = studentRecordBses;
     }
 
