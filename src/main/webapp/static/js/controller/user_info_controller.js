@@ -88,6 +88,7 @@ app.controller('UserInfoController', ['$scope', '$rootScope', 'StudentInfo', 'St
         ob.studentInfo.users = {};
         ob.studentInfo.users.role = {};
         ob.studentInfo.users.role.roleId = localStorage.getItem("role");
+        console.log("rollId: "+ob.studentInfo.users.role.roleId);
         ob.studentRecordBs = new StudentRecordBs();
         ob.studentInfo.studentRecordBsList = [ob.studentRecordBs];
         //ob.studentRecordBs=new studentRecordBs();

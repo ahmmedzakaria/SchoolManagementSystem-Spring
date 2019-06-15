@@ -17,28 +17,33 @@
                 <button id ="btn_navigate" data-target="#sidebar" data-toggle="collapse" class="btn" ng-class="{min: min}" ng-click="toggle()" data-active-icon='&#xf104;' data-inactive-icon='&#xf105;'></button>
                 <!--<a href="#" data-target="#sidebar" data-toggle="collapse"><i class="fa fa-navicon fa-2x py-2 p-1"></i></a>-->           
             </main><br><br>
+            
+            <div class="d-flex">
+                <h1 class="display-4 mx-auto text-primary">Add Marks</h1>
+                <br>
+            </div>
 
             <div class="d-flex">
                 <div class="p-2 bg-info flex-fill">
-                    <label for="studentSession" class="lbl"><b>Session</b></label>
+                    <label for="studentSession" class="lbl text-light"><b>Session</b></label>
                     <select ng-change="marksCtrl.getStudentsBySesssion()" class="form-control" id="studentSession"  ng-model="marksCtrl.studentSession" ng-options="studentSession.sessionName for studentSession in marksCtrl.commonSupport.studentSessionsList">
                         <option value="" disabled selected>{{marksCtrl.studentSession.sessionName}}</option>
                     </select>
                 </div>
                 <div ng-show="marksCtrl.classFlag" class="p-2 bg-warning flex-fill">
-                    <label for="class" class="lbl"><b>Class</b></label>
+                    <label for="class" class="lbl text-light"><b>Class</b></label>
                     <select ng-change="marksCtrl.getStudentsBySesssionAndClass()"  class="form-control" id="class"  ng-model="marksCtrl.classes" ng-options="classes.className for classes in marksCtrl.commonSupport.classList">
                         <option value="" disabled selected>{{marksCtrl.classes.className}}</option>
                     </select>
                 </div>
                 <div ng-show="marksCtrl.sectionFlag" class="p-2 bg-primary flex-fill">
-                    <label for="section" class="lbl"><b>Section</b></label>
+                    <label for="section" class="lbl text-light"><b>Section</b></label>
                     <select ng-change="marksCtrl.getStudentsBySesssionClassAndSection()" class="form-control" id="section"  ng-model="marksCtrl.section" ng-options="section.sectionName for section in marksCtrl.commonSupport.sectionList">
                         <option value="" disabled selected>{{marksCtrl.section.sectionName}}</option>
                     </select>
                 </div>
                 <div ng-show="marksCtrl.groupFlag" class="p-2 bg-success flex-fill">
-                    <label for="groups" class="lbl"><b>Group</b></label>
+                    <label for="groups" class="lbl text-light"><b>Group</b></label>
                     <select ng-change="marksCtrl.getStudentsBySesssionClassSectionAndGroup()" class="form-control" id="groups"  ng-model="marksCtrl.groups" ng-options="groups.groupName for groups in marksCtrl.commonSupport.groupsList">
                         <option value="" disabled selected>{{marksCtrl.groups.groupName}}</option>
                     </select>
@@ -47,13 +52,13 @@
             <br>
             <div class="d-flex">
                 <div class="p-2 bg-info flex-fill">
-                    <label for="subjects" class="lbl"><b>Subjects</b></label>
+                    <label for="subjects" class="lbl text-light"><b>Subjects</b></label>
                     <select ng-change="marksCtrl.subjectSelected()" class="form-control" id="subjects"  ng-model="marksCtrl.subjects" ng-options="subjects.subjectName for subjects in marksCtrl.commonSupport.subjectsList">
                         <option value="" disabled selected>{{marksCtrl.subjects.subjectName}}</option>
                     </select>
                 </div>
-                <div ng-show="marksCtrl.examFlag" class="p-2 bg-light flex-fill">
-                    <label for="class" class="lbl"><b>Exams</b></label>
+                <div ng-show="marksCtrl.examFlag" class="p-2 bg-success flex-fill">
+                    <label for="class" class="lbl text-light"><b>Exams</b></label>
                     <select ng-change="marksCtrl.getStudentsBySesssionAndClass()"  class="form-control" id="exams"  ng-model="marksCtrl.exams" ng-options="exams.examName for exams in marksCtrl.commonSupport.examList">
                         <option value="" disabled selected>{{marksCtrl.exams.examName}}</option>
                     </select>
@@ -86,7 +91,7 @@
                     </tbody>
                 </table>
                 <br>
-                <button type="button" ng-click="marksCtrl.addMarks()" class="btn btn-outline-success">Save Attendance</button>
+                <button type="button" ng-click="marksCtrl.addMarks()" class="btn btn-outline-success">Save Marks</button>
                 
             </div>
 
@@ -146,6 +151,7 @@
             <script src="${pageContext.request.contextPath}/static/js/lib/angular-resource.min.js"></script>
             <script src="${pageContext.request.contextPath}/static/js/app.js"></script>
 
+           <!--<script src="${pageContext.request.contextPath}/static/js/controller/student_info_controller.js" type="text/javascript"></script>-->
             <script src="${pageContext.request.contextPath}/static/js/controller/marks_controller.js" type="text/javascript"></script>
 
             <!--        <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>

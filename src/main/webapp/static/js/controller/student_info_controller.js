@@ -83,13 +83,13 @@ app.controller('StudentInfoController', ['$scope', '$rootScope', 'StudentInfo', 
         ob.maxroll = "maxroll";
         ob.role = "role";
         ob.errorMsg = 'Something Wrong ';
-        ob.user = localStorage.getItem("user");
+        ob.user = "Student";
         ob.studentInfos = [];
         ob.studentInfo = new StudentInfo();
         ob.commonSupport = new CommonSupport();
         ob.studentInfo.users = {};
         ob.studentInfo.users.role = {};
-        ob.studentInfo.users.role.roleId = localStorage.getItem("role");
+        ob.studentInfo.users.role.roleId = 4;
         ob.studentRecordBs = new StudentRecordBs();
         ob.studentInfo.studentRecordBsList = [ob.studentRecordBs];
         //ob.studentRecordBs=new studentRecordBs();
@@ -116,7 +116,17 @@ app.controller('StudentInfoController', ['$scope', '$rootScope', 'StudentInfo', 
 //            // ob.fetchAllRoleInfos();
 //        }
 
-
+//  ob.getStudentsBySesssion = function () {
+//            console.log('session Change');
+//            console.log(ob.studentSession.sessionId);
+//           
+//            ob.studentInfo = StudentRecordBs.get({basepath: ob.studentinfo, subpath: ob.studentfilter, sessionId: ob.studentSession.sessionId}, function () {
+//                ob.studentRecordBsList = ob.studentInfo.studentRecordBsList;
+//                ob.generateAttendanceList(ob.studentRecordBsList);
+//                console.log(ob.studentRecordBsList);
+//                ob.classFlag=true;
+//            });
+//        };
 
         ob.addStudentInfo = function () {
             console.log('Inside save');

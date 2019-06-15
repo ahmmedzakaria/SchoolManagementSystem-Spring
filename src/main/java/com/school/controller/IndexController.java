@@ -81,4 +81,9 @@ public class IndexController {
     public String viewAttendance() {
         return "teacher/viewattendance";
     }
+    
+    @RequestMapping("/teacher/subjectivereport")
+    public String subjectiveReport() {
+        return "teacher/subjectivereport";
+    }
 }

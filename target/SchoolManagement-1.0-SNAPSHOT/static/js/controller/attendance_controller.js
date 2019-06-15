@@ -34,6 +34,13 @@ app.factory('CommonSupport', ['$resource', function ($resource) {
         );
     }]);
 
+app.factory('StudentSession', ['$resource', function ($resource) {
+        return $resource('http://localhost:8080/SchoolManagement/studentinfo/service/:userId', {userId: '@userId'},
+                {
+                    updateStudentSession: {method: 'PUT'}
+                }
+        );
+    }]);
 
 app.factory('Classes', ['$resource', function ($resource) {
         return $resource('http://localhost:8080/SchoolManagement/studentinfo/service/:userId', {userId: '@userId'},

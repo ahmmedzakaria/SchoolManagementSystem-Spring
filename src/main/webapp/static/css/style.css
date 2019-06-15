@@ -6,6 +6,8 @@
 @import url("bird-alert-bulma.css");
 @import url("form.css");
 @import url("model.css");
+@import url("footer.css");
+
 
 :root {
     /* Font */
@@ -27,14 +29,14 @@
     --header-bg-color:red
     --left-sidebar-bg-color:green;
     --left-sidebar-bg-color-for-menu:#333;
-    --right-sidebar-bg-color:green;
+    --right-sidebar-bg-color:fff;
     --main-content-bg-color:ffeecc;
     --footer-bg-color:#555;
     --footer-color:#ffffff;
     
     
     /*Menu Navigation*/
-    --nav-bg-color:#606060; 
+    --nav-bg-color:#048277; 
     --nav-hover-text-color:#fff;
     --nav-text-color:#fff;
     --nav-hover-bacground-0:#ff0000;

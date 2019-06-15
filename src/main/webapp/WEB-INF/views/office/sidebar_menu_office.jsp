@@ -13,7 +13,8 @@
     <a href="viewstudents" ng-click="studentCtrl.viewStudents()" class="list-group-item d-inline-block collapsed">
         <span class="d-none d-md-inline">View Students</span>
     </a>
-
+    
+     
 
     <a href="#menu3" class="list-group-item d-inline-block collapsed" data-toggle="collapse" aria-expanded="false">
         <span class="d-none d-md-inline">Something More </span>

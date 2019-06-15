@@ -28,7 +28,10 @@ public interface ISupportDao<T> extends ISupport<T>{
    default List<Integer> getRecordBsIdList(int sessionId,int classId, int sectionId, int groupId){return null;}
    
    default boolean isAttendanceExist(T t){return true;}
+   default boolean isExist(T t){return true;}
    default T getAttendanceIfExist(T t){return null;}
+   default T getByObject(T t){return null;}
+   
    
    default List<T> getAttendanceForClass(List<Integer> recordBsIdList){return null;}
    default List<T> getAttendanceForClass(int sessionId,int classId, int sectionId, int groupId){return null;}

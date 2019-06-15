@@ -39,9 +39,9 @@
             </div>
             <script src="${pageContext.request.contextPath}/static/js/lib/angular.min.js"></script>
             <script src="${pageContext.request.contextPath}/static/js/lib/angular-resource.min.js"></script>
-            <!--<script src="${pageContext.request.contextPath}/static/js/app.js"></script>-->
+            <script src="${pageContext.request.contextPath}/static/js/app.js"></script>
 
-            <!--<script src="${pageContext.request.contextPath}/static/js/controller/student_info_controller.js" type="text/javascript"></script>-->
+            <script src="${pageContext.request.contextPath}/static/js/controller/student_info_controller.js" type="text/javascript"></script>
 
 
         </div>

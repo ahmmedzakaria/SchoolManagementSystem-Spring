@@ -34,6 +34,13 @@ app.factory('CommonSupport', ['$resource', function ($resource) {
         );
     }]);
 
+app.factory('StudentSession', ['$resource', function ($resource) {
+        return $resource('http://localhost:8080/SchoolManagement/studentinfo/service/:userId', {userId: '@userId'},
+                {
+                    updateStudentSession: {method: 'PUT'}
+                }
+        );
+    }]);
 
 app.factory('Classes', ['$resource', function ($resource) {
         return $resource('http://localhost:8080/SchoolManagement/studentinfo/service/:userId', {userId: '@userId'},
@@ -158,9 +165,11 @@ app.controller('MarksController', ['$scope', '$rootScope', 'StudentInfo', 'Stude
                 if(ob.classes.classId>8){
                     ob.groupFlag=true;
                     ob.disablity=true;
+                    ob.marksFlag=true;
                 }else if(ob.classes.classId<9){ob.disablity=false;}
                 else{
                     ob.groupFlag=false;
+                    ob.marksFlag=false;
                     
                 }
                 
@@ -176,10 +185,21 @@ app.controller('MarksController', ['$scope', '$rootScope', 'StudentInfo', 'Stude
                 ob.generateMarkList(ob.studentRecordBsList);
                 if(ob.groups.groupId>1){
                     ob.disablity=false;
+                    ob.marksFlag=true;
                 }else{
                     ob.disablity=true;
+                    ob.marksFlag=false;
                 }
                 console.log(ob.studentRecordBsList);
+            });
+        };
+        
+        ob.getSubjectiveResult = function () {
+            console.log('Subject Result');
+            console.log(ob.subjects.subjectId);
+            ob.studentInfo = StudentRecordBs.get({basepath: ob.studentinfo, subpath: ob.studentfilter, sessionId: ob.studentSession.sessionId, classId: ob.classes.classId,
+                sectionId: ob.section.sectionId, groupId: ob.groups.groupId}, function () {
+                
             });
         };
         

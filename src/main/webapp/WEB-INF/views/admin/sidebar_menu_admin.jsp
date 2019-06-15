@@ -9,12 +9,12 @@
         <span class="d-none d-md-inline">Add Users</span>
     </a>
     <div class="collapse" id="menu1" data-parent="#sidebar">
-        <a href="adduser" class="list-group-item" ng-click="studentCtrl.addAdmin()">Admin</a>                    
-        <a href="adduser" class="list-group-item" ng-click="studentCtrl.addTeacher()">Teacher</a>              
-        <a href="adduser" class="list-group-item" ng-click="studentCtrl.addOfficeStuff()">Office Stuff</a>
+        <a href="adduser" class="list-group-item" ng-click="userCtrl.addAdmin()">Admin</a>                    
+        <a href="adduser" class="list-group-item" ng-click="userCtrl.addTeacher()">Teacher</a>              
+        <a href="adduser" class="list-group-item" ng-click="userCtrl.addOfficeStuff()">Office Stuff</a>
     </div>
 
-    <a href="viewusers" ng-click="studentCtrl.viewUsers()" class="list-group-item d-inline-block collapsed">
+    <a href="viewusers" ng-click="userCtrl.viewUsers()" class="list-group-item d-inline-block collapsed">
         <span class="d-none d-md-inline">View Users</span>
     </a>
 

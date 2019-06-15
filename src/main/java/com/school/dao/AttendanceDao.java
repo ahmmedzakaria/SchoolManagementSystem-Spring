@@ -96,6 +96,7 @@ public class AttendanceDao implements ISupportDao<Attendance> {
 
         return (aList.size() > 0 && aList != null) ? aList.get(0) : null;
     }
+    
     String ids = "";
 
     @Override

@@ -17,6 +17,11 @@
                 <button id ="btn_navigate" data-target="#sidebar" data-toggle="collapse" class="btn" ng-class="{min: min}" ng-click="toggle()" data-active-icon='&#xf104;' data-inactive-icon='&#xf105;'></button>
                 <!--<a href="#" data-target="#sidebar" data-toggle="collapse"><i class="fa fa-navicon fa-2x py-2 p-1"></i></a>-->           
             </main><br><br>
+            
+            <div class="d-flex">
+                <h1 class="display-4 mx-auto text-primary">Give Attendance</h1>
+                <br>
+            </div>
 
             <div class="d-flex">
                 <div class="p-2 bg-info flex-fill">
@@ -127,6 +132,7 @@
             <script src="${pageContext.request.contextPath}/static/js/app.js"></script>
 
             <script src="${pageContext.request.contextPath}/static/js/controller/attendance_controller.js" type="text/javascript"></script>
+<!--<script src="${pageContext.request.contextPath}/static/js/controller/student_info_controller.js" type="text/javascript"></script>-->
 
             <!--        <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
                     <script src='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'></script>-->

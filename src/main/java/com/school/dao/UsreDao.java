@@ -66,7 +66,7 @@ public class UsreDao implements ISupportDao<Users>{
     
     @Override
     public List<Users> getAllWithoutStudent() {
-        String hql = "FROM Users ob WHERE ob.role.roleId In(1,2,3)";
+        String hql = "FROM Users ob WHERE ob.role.roleId In(1,2,3) ORDER BY ob.role.roleId";
         return (List<Users>) hibernateTemplate.find(hql);
     }
 

@@ -19,16 +19,16 @@
 
 
             <!--User Registration Form-->
-            <div ng-controller="StudentInfoController as userCtrl" id="container">
+            <div id="container">
                 {{userCtrl.test}}
 
                 <!--<div ng-if="$root.displayAlert(userCtrl.flag,userCtrl.msg,userCtrl.title,userCtrl.className) === true"></div>-->
-<!--                <span ng-if="userCtrl.flag == 'failed'" class="msg-val">Users already exists.</span> -->
+                <!--                <span ng-if="userCtrl.flag == 'failed'" class="msg-val">Users already exists.</span> -->
 
                 <form name="studentInfoForm" method="POST">
                     <h3> Register {{userCtrl.user}}</h3>
 
-                    
+
 
                     <label for="firstName" class="lbl"><b>First Name</b></label>
                     <input type="text" name="firstName" ng-model="userCtrl.studentInfo.users.firstName"  placeholder="Your First Name" required /> 
@@ -56,12 +56,12 @@
 
                     <div ng-if="$root.displayAlert(userCtrl.flag) === true"></div>
                     <span ng-if="userCtrl.flag == 'failed'" class="msg-val">Users already exists.</span> 
-                    
+
                     <label for="gender">Gender</label></br>
-			<input type="radio" name="gender" id="gender"  ng-model='userCtrl.studentInfo.users.gender.genderId' ng-value='"1"' value="male"> Male<br>
-			<input type="radio" name="gender" id="gender" ng-model='userCtrl.studentInfo.users.gender.genderId' ng-value='"2"' value="female"> Female<br>
-                  
-                        <!--File Upload-->
+                    <input type="radio" name="gender" id="gender"  ng-model='userCtrl.studentInfo.users.gender.genderId' ng-value='"1"' value="male"> Male<br>
+                    <input type="radio" name="gender" id="gender" ng-model='userCtrl.studentInfo.users.gender.genderId' ng-value='"2"' value="female"> Female<br>
+
+                    <!--File Upload-->
                     <input type="file" custom-on-change="uploadFile" id="fileSelected">
 
                     <br>
@@ -69,19 +69,25 @@
                     <input id="save" class="save btn btn-success" type="submit" ng-click="userCtrl.addStudentInfo()"  value="Save User"/> 
                     <input id="reset" type="button" class="reset btn btn-warning" ng-click="userCtrl.reset()" value="Reset"/>
 
-                  
+
 
                 </form>
                 <br>
 
             </div>
-                    
-                    
-                
-                    
+
+
+
+
             <script src="${pageContext.request.contextPath}/static/js/lib/angular.min.js"></script>
             <script src="${pageContext.request.contextPath}/static/js/lib/angular-resource.min.js"></script>
-            
+            <script src="${pageContext.request.contextPath}/static/js/app.js" type="text/javascript"></script>
+
+
+            <script src="${pageContext.request.contextPath}/static/js/controller/user_info_controller.js" type="text/javascript"></script>
+            <!--<script src="${pageContext.request.contextPath}/static/js/controller/student_info_controller.js" type="text/javascript"></script>-->
+
+
 
 
         </div>

@@ -6,9 +6,19 @@
 package com.school.controller;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.school.dao.JasperReportDAO;
 import com.school.domain.support.CommonSupport;
 import com.school.domain.support.StudentInfo;
 import com.school.support.ISupportService;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.HashMap;
+import javax.naming.NamingException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperReport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpHeaders;
@@ -69,7 +79,58 @@ public class MarksController {
         headers.setLocation(builder.path("/marks/{id}").buildAndExpand(1).toUri());
         return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
     }
+@RequestMapping(value = "/marksreport/{sessionId}/{classId}/{sectionId}/{groupId}/{subjectId}", method = RequestMethod.GET)
+    public String marksReoprt(HttpServletRequest request,HttpServletResponse response,@PathVariable("sessionId") Integer sessionId,@PathVariable("classId") Integer classId,@PathVariable("sectionId") Integer sectionId,@PathVariable("groupId") Integer groupId,@PathVariable("subjectId") Integer subjectId) throws JRException, IOException, SQLException, NamingException {
+        
+       String reportFileName = "SubjectiveResult";
 
+        JasperReportDAO jrdao = new JasperReportDAO();
+
+        Connection conn = null;
+
+        try {
+            conn = jrdao.getConnection();
+
+           // String title = reportInputForm.getTitle();
+
+            HashMap<String, Object> hmParams = new HashMap<String, Object>();
+
+//            hmParams.put("sessionId", 1);
+//            hmParams.put("classId", 6);
+//            hmParams.put("sectionId", 1);
+//            hmParams.put("groupId", 1);
+//            hmParams.put("subjectId", 3);
+            
+            hmParams.put("sessionId", sessionId);
+            hmParams.put("classId", classId);
+            hmParams.put("sectionId", sectionId);
+            hmParams.put("groupId", groupId);
+            hmParams.put("subjectId", subjectId);
+
+            JasperReport jasperReport = jrdao.getCompiledFile(reportFileName,
+                    request);
+
+                jrdao.generateReportPDF(response, hmParams, jasperReport, conn); 
+
+
+        } catch (SQLException sqlExp) {
+            System.out.println("Exception::" + sqlExp.toString());
+        } finally {
+            if (conn != null) {
+                try {
+                    conn.close();
+                    conn = null;
+                } catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+
+            }
+
+        }
+
+        return null;
+    }
 //    @RequestMapping(value = "/marks/{id}", method = RequestMethod.PUT)
 //    public ResponseEntity<Marks> updateUser(@RequestBody Marks obj) {
 //        iMarksService.update(obj);
